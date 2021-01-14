@@ -31,6 +31,12 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
+  win.webContents.on('did-finish-load',  () => {
+    const { title, version } = require('../package.json')
+    win.setTitle(`${title} :: ${version}`)
+ })
+
+
 }
 
 // Quit when all windows are closed.
